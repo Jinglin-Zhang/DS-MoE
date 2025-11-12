@@ -71,8 +71,8 @@ python tools/test.py
 - CUDA ≥ 11.8  
 - Dependencies：
   ```bash
-  pip install -r requirements.txt
-  ```
+pip install -r requirements.txt
+```
 
 ---
 
