@@ -1,59 +1,62 @@
 # Distilled LLM-Driven Dynamic Sparse Mixture-of-Experts
 
-## 📘 简介
+## 📘 Overview
 
-本项目实现论文 **“Distilled Large Language Model (LLM)-Driven Sparse Mixture-of-Experts (DS-MoE)”** 中提出的跨模态工业缺陷检测框架。  
-该框架利用**大语言模型语义引导的稀疏专家激活机制**，实现文本-视觉联合理解、动态专家路由以及轻量级特征提取，面向多尺度工业检测任务（如 PCB、铝箔、模具等）。
+This project implements the framework proposed in the paper **“Distilled Large Language Model (LLM)-Driven Sparse Mixture-of-Experts (DS-MoE)”**.  
+The framework leverages **LLM-guided semantic-driven sparse expert activation** for cross-modal industrial defect detection, enabling joint text-visual understanding, dynamic expert routing, and lightweight feature extraction for multi-scale industrial inspection tasks (e.g., PCB, aluminum foil, molds).
+
 
 ---
 
-## 🧩 框架概述
+## 🧩 Framework Overview
 
-论文核心结构如图：
+
+The core structure of the proposed DS-MoE model is illustrated below:
 
 ![img.png](img.png)
 ---
 
-## 🧠 模型特性
+## 🧠 Key Features
 
-- **文本引导的动态专家激活**  
-  LLM 语义嵌入用于选择性激活任务相关专家（局部纹理、全局结构、跨模态交互）。
-  
-- **轻量级 Mobile-SAM 特征提取**  
-  保留微米级缺陷细节，实现实时检测。
+- **Text-Guided Dynamic Expert Activation**  
+  LLM semantic embeddings are used to selectively activate task-relevant experts (local texture, global structure, and cross-modal interaction).
 
-- **双曲流形对齐 (Hyperbolic Alignment)**  
-  在 Poincaré 球空间中保持语义层次与几何一致性。
+- **Lightweight Mobile-SAM Feature Extraction**  
+  Preserves micron-level defect details while achieving real-time detection efficiency.
 
-- **多尺度与跨模态融合**  
-  空间广播与语义卷积融合确保尺度自适应。
+- **Hyperbolic Alignment**  
+  Maintains semantic hierarchy and geometric consistency in the Poincaré ball space.
 
-- **双头解耦检测**  
-  独立的分类与定位分支避免梯度冲突。
+- **Multi-Scale and Cross-Modal Fusion**  
+  Spatial broadcasting and semantic convolution ensure adaptive scale fusion and modality alignment.
+
+- **Dual-Head Decoupled Detection**  
+  Independent classification and localization branches prevent gradient conflicts.
+
 
 ---
 
-## 🧪 实验结果
+## 🧪 Experimental Results
 
-在多个工业检测数据集上，DS-MoE 均优于传统视觉模型：
+DS-MoE outperforms conventional vision-based models across multiple industrial inspection benchmarks:
 
-| 数据集 | mAP@0.5 | mAP@0.5:0.95 | 精度 | 召回率 |
+| Dataset | mAP@0.5 | mAP@0.5:0.95 | Precision | Recall |
 |:--|:--:|:--:|:--:|:--:|
-| BBMP（玻璃瓶底） | **99.5%** | 85.2% | 98.3% | 98.1% |
+| BBMP (Glass Bottle Bottom) | **99.5%** | 85.2% | 98.3% | 98.1% |
 | Aluminum Foil | **99.2%** | 57.7% | 97.8% | 98.1% |
 | PCB Surface | **94.2%** | 53.4% | 96.8% | 96.8% |
 
 ---
 
 
-## 🚀 使用说明
+## 🚀 Usage
 
-### 1️⃣ 训练模型
+### 1️⃣ Train the Model
 ```bash
 python tools/train.py
 ```
 
-### 2️⃣ 测试模型
+### 2️⃣ Test the Model
 ```bash
 python tools/test.py
 ```
@@ -61,12 +64,12 @@ python tools/test.py
 
 ---
 
-## ⚙️ 环境配置
+## ⚙️ Environment Setup
 
 - Python ≥ 3.9  
 - PyTorch ≥ 2.0.1  
 - CUDA ≥ 11.8  
-- 依赖库：
+- Dependencies：
   ```bash
   pip install -r requirements.txt
   ```
@@ -75,9 +78,9 @@ python tools/test.py
 
 
 
-## ✏️ 引用
+## ✏️ Citation
 
-若在研究中使用本代码，请引用原论文：
+If you use this code or dataset in your research, please cite the following paper:
 
 > Q. Chen, Z. Zhang, et al.  
 > *Distilled Large Language Model-Driven Dynamic Sparse Expert Activation Mechanism.*  
